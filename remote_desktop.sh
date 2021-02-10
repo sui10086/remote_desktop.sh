@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# 启动准备
+sudo su && apt update && apt install wget
+
 # 远程桌面安装脚本 
 
 Green_font_prefix="\033[32m"
