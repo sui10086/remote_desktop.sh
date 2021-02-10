@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 启动准备
-sudo su && apt update && apt install wget
+sudp apt update && sudo apt install wget
 
 # 远程桌面安装脚本 
 
@@ -33,7 +33,7 @@ elif [[ -n "$(uname | grep -i Darwin)" ]]; then
     chmod +x ngrok
     sudo mv ngrok /usr/local/bin
     ngrok -v
-    USER=root
+    # USER=root
     echo -e "${INFO} Set SSH service ..."
     echo 'PermitRootLogin yes' | sudo tee -a /etc/ssh/sshd_config >/dev/null
     sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
