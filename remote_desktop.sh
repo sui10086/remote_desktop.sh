@@ -3,6 +3,10 @@
 # 启动准备
 sudo apt update && sudo apt install wget && sudo apt install screen
 
+# 安装桌面
+sudo apt -y install xfce4 &&sudo apt -y install firefox && sudo apt install tightvncserver 
+&& sudo tightvncserver :1
+
 # 远程桌面安装脚本 
 
 Green_font_prefix="\033[32m"
@@ -49,12 +53,17 @@ if [[ -n "${SSH_PASSWORD}" ]]; then
     echo -e "${SSH_PASSWORD}\n${SSH_PASSWORD}" | sudo passwd "${USER}"
 fi
 
-echo -e "${INFO} Start ngrok proxy for SSH port..."
-screen -dmS ngrok \
-    ngrok tcp 22 \
-    --log "${LOG_FILE}" \
-    --authtoken "${NGROK_TOKEN}" \
-    --region "${NGROK_REGION:-us}"
+
+echo -e "${INFO} Start remote desktop ..."
+screen -R test
+./ngrok authtoken "${NGROK_TOKEN}" && ./ngrok tcp 5901
+
+# echo -e "${INFO} Start ngrok proxy for SSH port..."
+# screen -dmS ngrok \
+#     ngrok tcp 22 \
+#     --log "${LOG_FILE}" \
+#     --authtoken "${NGROK_TOKEN}" \
+#     --region "${NGROK_REGION:-us}"
 
 while ((${SECONDS_LEFT:=10} > 0)); do
     echo -e "${INFO} Please wait ${SECONDS_LEFT}s ..."
