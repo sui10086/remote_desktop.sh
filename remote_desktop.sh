@@ -13,7 +13,7 @@ Font_color_suffix="\033[0m"
 INFO="[${Green_font_prefix}INFO${Font_color_suffix}]"
 ERROR="[${Red_font_prefix}ERROR${Font_color_suffix}]"
 NGROK_TOKEN="1nRjV2YVfJoRWV2qPKYV6sYvHov_2Aq95dvRJfJUjzJknCdn7"
-LOG_FILE='/tmp/ngrok.log'
+LOG_FILE='./ngrok.log'
 CONTINUE_FILE="/tmp/continue"
 
 
